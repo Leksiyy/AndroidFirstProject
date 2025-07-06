@@ -10,6 +10,14 @@ export default function Calc() {
       <Text style={styles.expression}>22 + 33 =</Text>
       <Text style={styles.result}>55</Text>
       <View style={styles.calcButtonRow}>
+        <CaclButtonMemoryControl title="MC" />
+        <CaclButtonMemoryControl title="MR" />
+        <CaclButtonMemoryControl title="M+" />
+        <CaclButtonMemoryControl title="M-" />
+        <CaclButtonMemoryControl title="MS" />
+        <CaclButtonMemoryControl title={'M\u02C5'} />
+      </View>
+      <View style={styles.calcButtonRow}>
         <CaclButton title="%" action={onButtonPress} />
         <CaclButton title="CE" action={onButtonPress} />
         <CaclButton title="C" action={onButtonPress} />
@@ -37,7 +45,7 @@ export default function Calc() {
         <CaclButton title="1" action={onButtonPress} />
         <CaclButton title="2" action={onButtonPress} />
         <CaclButton title="3" action={onButtonPress} />
-        <CaclButton title='+' action={onButtonPress} />
+        <CaclButton title="+" action={onButtonPress} />
       </View>
       <View style={styles.calcButtonRow}>
         <CaclButton title={'\u207A/\u208B'} action={onButtonPress} />
@@ -54,6 +62,9 @@ type CalcButtonData = {
   type?: string,
   action: (title: string, type?: string) => any
 }
+type CalcButtonMemoryControlData = {
+  title: string,
+}
 
 function CaclButton({title, type, action}: CalcButtonData) {
   return(
@@ -63,7 +74,18 @@ function CaclButton({title, type, action}: CalcButtonData) {
   )
 }
 
+function CaclButtonMemoryControl({ title }: CalcButtonMemoryControlData) {
+  return (
+    <TouchableOpacity onPress={() => {}} style={[styles.caclButton, styles.caclButtonMemoryControl]}>
+      <Text style={styles.calcButtonText}>{title}</Text>
+    </TouchableOpacity>
+  );
+}
+
 const styles = StyleSheet.create({
+  caclButtonMemoryControl: {
+    backgroundColor: 'transparent',
+  },
   calcButtonText: {
     color: "#ffffff",
     fontSize: 20,
