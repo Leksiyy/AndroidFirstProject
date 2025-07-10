@@ -16,7 +16,7 @@ function App() {
     queryParams: object,
   }
 
-  const [page, setPage] = useState("calc");
+  const [page, setPage] = useState("game");
   const [history, setHistory] = useState([] as Array<string>)
 
   const navigate = (href: string) => {
